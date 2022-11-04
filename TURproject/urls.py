@@ -15,7 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+from django.urls import include, path
+
+from turapps.views import PerevalAddedViewSet, UsersViewSet, CoordsViewSet, LevelViewSet, ImageViewSet
+
+
+router = DefaultRouter()
+router.register('pereval', PerevalAddedViewSet)
+router.register('users', UsersViewSet)
+router.register('coords', CoordsViewSet)
+router.register('level', LevelViewSet)
+router.register('images', ImageViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    # path('api/v1/pereval_addedlist',PerevalAddedAPIList.as_view()),
+    # path('api/v1/pereval_addedlist/<int:pk>/',PerevalAddedAPIList.as_view()),
 ]
