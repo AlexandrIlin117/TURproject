@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'turapps',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +78,12 @@ WSGI_APPLICATION = 'TURproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pereval',
+        'USER': config('FSTR_LOGIN'),
+        'PASSWORD': config('FSTR_PASS'),
+        'HOST': config('FSTR_DB_HOST'),
+        'PORT': config('FSTR_DB_PORT'),
     }
 }
 
@@ -106,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
