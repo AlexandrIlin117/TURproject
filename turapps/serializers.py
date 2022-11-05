@@ -3,8 +3,6 @@ from rest_framework import serializers
 from .models import pereval_added
 
 
-
-
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
@@ -81,18 +79,11 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
         level_id = Level.objects.filter(winter=ses_winter).filter(summer=ses_summer).filter(autumn=ses_autumn).filter(spring=ses_spring)[0]
         # добавляем ID пользователя, координат и сложности в словарь необходимый
         # для создания новой записи в таблице перевал;
-        print(validated_data)
-        print(coord_id)
-        print(level_id)
-        print(user_id)
-        print('--------------------')
         validated_data.setdefault('user',user_id)
         validated_data.setdefault('coords', coord_id)
         validated_data.setdefault('level', level_id)
-
         # Создадим новую запись о перевале;
         pereval = pereval_added.objects.create(**validated_data)
-
         # Для каждого изображения из списка изображений
         for image in images:
             # Создадим новую запись или получим существующий экземпляр из БД

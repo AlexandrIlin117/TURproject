@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import pereval_added, Coords, Users, Level, Images
@@ -18,11 +16,13 @@ class UsersViewSet(viewsets.ModelViewSet):
 
 class LevelViewSet(viewsets.ModelViewSet):
     queryset = Level.objects.all()
-    serializer_class = CoordsSerializer
+    serializer_class = LevelSerializer
 
 class CoordsViewSet(viewsets.ModelViewSet):
     queryset = Coords.objects.all()
     serializer_class = CoordsSerializer
+
+
 
 class ImageViewSet(viewsets.ModelViewSet):
     queryset = Images.objects.all()
