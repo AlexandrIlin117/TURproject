@@ -29,31 +29,4 @@ class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = ImagesSerializer
 
 
-class PerevalAddedAPIView(APIView):
-    def get(self, request):
-        p = pereval_added.objects.all()
-        return Response({'post':PerevalAddedSerializer(p, many=True).data})
-
-    def post(self,request):
-        serializer = PerevalAddedSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({'post':PerevalAddedSerializer.data})
-
-    def put(self,request,*args, **kwargs):
-        pk = kwargs.get("pk", None)
-        print(pk)
-        if not pk:
-            return Response({'error':'Method PUTIN not allowed'})
-
-        try:
-            instance = pereval_added.get(pk=pk)
-        except:
-            return Response({'error':'Method PUTOUT not allowed'})
-
-        serializer = PerevalAddedSerializer(data=request.data, instance=instance)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({'post':PerevalAddedSerializer.data})
-
 
