@@ -29,15 +29,6 @@ class ImageViewSet(viewsets.ModelViewSet):
     serializer_class = ImagesSerializer
 
 
-
-
-
-
-
-
-
-
-
 class PerevalAddedAPIView(APIView):
     def get(self, request):
         p = pereval_added.objects.all()
