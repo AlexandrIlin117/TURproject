@@ -94,3 +94,27 @@ class PerevalAddedSerializer(serializers.ModelSerializer):
             PerevalImages.objects.create(
                 images=current_image, pereval=pereval)
         return pereval
+
+    def update(self, instance, validated_data):
+        instance.beautyTitle = validated_data.get('beautyTitle')
+        instance.btitle = validated_data.get('title')
+        instance.other_titles = validated_data.get('other_titles')
+        instance.connect = validated_data.get('connect')
+        instance.add_time = validated_data.get('add_time')
+        instance.status = validated_data.get('status')
+        current_coords = validated_data.get('coords')
+        # Обновляем поля со связями;
+        ses_latitude = current_coords['latitude']
+        ses_longitude = current_coords['longitude']
+        ses_height = current_coords['height']
+        Coords.objects.filter(pk=instance.coords_id).update(latitude=ses_latitude, longitude=ses_longitude, height=ses_height)
+
+        current_level = validated_data.get('level')
+        ses_winter = current_level['winter']
+        ses_summer = current_level['summer']
+        ses_autumn = current_level['autumn']
+        ses_spring = current_level['spring']
+        Level.objects.filter(pk=instance.level_id).update(winter=ses_winter, summer=ses_summer, autumn=ses_autumn, spring=ses_spring)
+
+        instance.save()
+        return instance
