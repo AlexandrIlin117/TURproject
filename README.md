@@ -2,8 +2,11 @@
 REST API ИТОГОВОЕ ЗАДАНИЕ (HW-04) Спринт 2 + 3
 ==============================================
 
-*   [Introduction](https://documenter.getpostman.com/view/24238320/2s8YYPJ1aK#intro)
-*   Для перехода
+*   [Interactive version made in the Postman application](https://documenter.getpostman.com/view/24238320/2s8YYPJ1aK#intro)
+*   реализовать бизнес приложение с требуемым REST API
+*   развернуть его на реальном сервере используя VPS
+*   создать документацию к продукту описывающую REST API
+
 
 GET
 
