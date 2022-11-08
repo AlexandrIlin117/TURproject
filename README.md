@@ -3,6 +3,7 @@ REST API ИТОГОВОЕ ЗАДАНИЕ (HW-04) Спринт 2 + 3
 ==============================================
 
 *   [Introduction](https://documenter.getpostman.com/view/24238320/2s8YYPJ1aK#intro)
+*   [Для перехода]
 
 GET
 
